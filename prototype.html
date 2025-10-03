@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototipe Smart Mirror Kesehatan</title>
+    <link rel="stylesheet" href="mirror.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Prototipe Smart Mirror</h1>
+
+        <div class="view-selector">
+            <button class="view-btn active" onclick="showView('front')">Tampilan Depan</button>
+            <button class="view-btn" onclick="showView('side')">Tampilan Samping</button>
+            <button class="view-btn" onclick="showView('back')">Tampilan Belakang</button>
+            <button class="view-btn" onclick="showView('components')">Komponen Detail</button>
+            <button class="view-btn" onclick="showView('recommendation')">Sistem Rekomendasi</button>
+            <button class="view-btn" onclick="showView('specs')">Spesifikasi Teknis</button>
+        </div>
+
+        <!-- TAMPILAN DEPAN -->
+        <div id="front" class="view-container active">
+            <h2 style="text-align: center; color: #2c3e50; margin-bottom: 30px;">Tampilan Depan Smart Mirror</h2>
+            <div class="front-view">
+                <div class="mirror-frame">
+                    <div class="mirror-screen">
+                        <div class="camera-indicator">
+                            <div class="camera-dot"></div>
+                        </div>
+
+                        <div class="screen-header">
+                            ⚕️ HEALTH MONITOR SYSTEM
+                        </div>
+
+                        <div class="health-data-display">
+                            <div class="data-card">
+                                <div class="data-label">❤️ Detak Jantung</div>
+                                <div class="data-value">72</div>
+                                <div class="data-unit">BPM</div>
+                            </div>
+
+                            <div class="data-card">
+                                <div class="data-label">🫁 SpO₂</div>
+                                <div class="data-value">98</div>
+                                <div class="data-unit">%</div>
+                            </div>
+
+                            <div class="data-card">
+                                <div class="data-label">📏 Tinggi</div>
+                                <div class="data-value">170</div>
+                                <div class="data-unit">cm</div>
+                            </div>
+
+                            <div class="data-card">
+                                <div class="data-label">⚖️ Berat</div>
+                                <div class="data-value">65</div>
+                                <div class="data-unit">kg</div>
+                            </div>
+
+                            <div class="data-card" style="grid-column: 1 / -1;">
+                                <div class="data-label">📊 IMT (BMI)</div>
+                                <div class="data-value">22.5</div>
+                                <div class="data-unit">Normal</div>
+                            </div>
+                        </div>
+
+                        <div style="text-align: center; color: #00ff00; font-size: 18px; margin-top: 30px;">
+                            ✅ Kondisi Kesehatan: BAIK
+                        </div>
+
+                        <div
+                            style="background: rgba(0,255,0,0.1); border: 2px solid rgba(0,255,0,0.3); border-radius: 10px; padding: 20px; margin-top: 20px;">
+                            <div
+                                style="color: #00ff00; font-size: 16px; font-weight: bold; margin-bottom: 10px; text-align: center;">
+                                💡 REKOMENDASI HARI INI
+                            </div>
+                            <div style="color: white; font-size: 14px; line-height: 1.8; text-align: left;">
+                                ✓ Pertahankan pola makan seimbang<br>
+                                ✓ Olahraga ringan 30 menit/hari<br>
+                                ✓ Minum air putih minimal 2 liter<br>
+                                ✓ Tidur cukup 7-8 jam per malam
+                            </div>
+                        </div>
+
+                        <div
+                            style="text-align: center; color: #aaa; font-size: 14px; margin-top: 20px; line-height: 1.6;">
+                            💬 "Hai! Tanyakan apa saja tentang kesehatanmu"<br>
+                            🎤 Aktifkan dengan kata kunci voice command
+                        </div>
+
+                        <div class="sensor-position-front">
+                            🖐️ MAX30100
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="legend">
+                <div class="legend-title">Keterangan Tampilan Depan:</div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #ff4444;"></div>
+                    <div class="legend-text"><strong>Kamera ESP32-CAM</strong> - Terletak di pojok kanan atas untuk
+                        deteksi wajah</div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #e74c3c;"></div>
+                    <div class="legend-text"><strong>Sensor MAX30100</strong> - Di bagian bawah tengah untuk pengukuran
+                        detak jantung dan SpO₂</div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #00ffff;"></div>
+                    <div class="legend-text"><strong>Layar LCD/Monitor</strong> - Menampilkan semua data kesehatan
+                        secara real-time</div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #0f2027;"></div>
+                    <div class="legend-text"><strong>Kaca One-Way Mirror</strong> - Berfungsi sebagai cermin dan layar
+                        display</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAMPILAN SAMPING -->
+        <div id="side" class="view-container">
+            <h2 style="text-align: center; color: #2c3e50; margin-bottom: 30px;">Tampilan Samping (Potongan Melintang)
+            </h2>
+
+            <div class="side-diagram">
+                <div style="display: flex; flex-direction: column; gap: 40px;">
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <div class="component-box">
+                            <div class="component-title">🪞 Kaca One-Way Mirror</div>
+                            <div class="component-desc">
+                                • Ketebalan: 4-6mm<br>
+                                • Material: Kaca cermin dua arah<br>
+                                • Fungsi: Refleksi & transparansi
+                            </div>
+                        </div>
+                        <div class="connector-line"></div>
+                    </div>
+
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <div class="component-box">
+                            <div class="component-title">📺 LCD Monitor</div>
+                            <div class="component-desc">
+                                • Ukuran: 21.5" - 24"<br>
+                                • Resolusi: 1920x1080 px<br>
+                                • Brightness: High (400+ cd/m²)
+                            </div>
+                        </div>
+                        <div class="connector-line"></div>
+                    </div>
+
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <div class="component-box">
+                            <div class="component-title">🖥️ Komponen Elektronik</div>
+                            <div class="component-desc">
+                                • ESP32-CAM<br>
+                                • Power Supply 5V/12V<br>
+                                • Kabel & Koneksi
+                            </div>
+                        </div>
+                        <div class="connector-line"></div>
+                    </div>
+                </div>
+
+                <div class="mirror-side">
+                    <div class="glass-layer"></div>
+                    <div class="lcd-layer"></div>
+
+                    <div
+                        style="position: absolute; left: -55px; top: 20px; font-size: 12px; color: #3498db; font-weight: bold;">
+                        ← Depan (Pengguna)
+                    </div>
+
+                    <div
+                        style="position: absolute; right: -30px; top: 20px; font-size: 12px; color: #e74c3c; font-weight: bold;">
+                        Belakang →
+                    </div>
+
+                    <div
+                        style="position: absolute; left: 50%; bottom: 10px; transform: translateX(-50%); font-size: 11px; color: white; background: rgba(0,0,0,0.7); padding: 5px 10px; border-radius: 5px;">
+                        Ketebalan Total: ~10-15cm
+                    </div>
+                </div>
+            </div>
+
+            <div class="legend" style="margin-top: 50px;">
+                <div class="legend-title">Susunan Layer dari Depan ke Belakang:</div>
+                <p style="color: #555; line-height: 2; font-size: 14px;">
+                    1️⃣ <strong>Kaca One-Way Mirror</strong> (4-6mm) - Permukaan depan yang berfungsi sebagai cermin<br>
+                    2️⃣ <strong>Celah Udara</strong> (2-3cm) - Ruang antara kaca dan LCD<br>
+                    3️⃣ <strong>LCD Monitor</strong> (2-3cm) - Layar display yang memancarkan cahaya<br>
+                    4️⃣ <strong>Ruang Komponen</strong> (5-8cm) - Tempat ESP32-CAM, power supply, dan elektronik
+                    lainnya<br>
+                    5️⃣ <strong>Penutup Belakang</strong> - Panel kayu/plastik untuk melindungi komponen
+                </p>
+            </div>
+        </div>
+
+        <!-- TAMPILAN BELAKANG -->
+        <div id="back" class="view-container">
+            <h2 style="text-align: center; color: #2c3e50; margin-bottom: 30px;">Tampilan Belakang Smart Mirror</h2>
+
+            <div class="back-view">
+                <div class="mirror-back">
+                    <h3 style="color: white; text-align: center; margin-bottom: 30px;">Tata Letak Komponen</h3>
+
+                    <div class="component-back">
+                        <div class="comp-name">📷 ESP32-CAM Module</div>
+                        <div class="comp-spec">• Posisi: Pojok kanan atas (mounting bracket)</div>
+                        <div class="comp-spec">• Koneksi: Micro USB untuk power & programming</div>
+                        <div class="comp-spec">• Kabel: I2C ke sensor MAX30100</div>
+                    </div>
+
+                    <div class="component-back">
+                        <div class="comp-name">📺 LCD Monitor Controller Board</div>
+                        <div class="comp-spec">• Posisi: Tengah belakang LCD</div>
+                        <div class="comp-spec">• Input: HDMI/VGA dari ESP32-CAM</div>
+                        <div class="comp-spec">• Power: 12V DC adapter</div>
+                    </div>
+
+                    <div class="component-back">
+                        <div class="comp-name">❤️ Sensor MAX30100</div>
+                        <div class="comp-spec">• Posisi: Bagian bawah tengah (mounting di balik kaca)</div>
+                        <div class="comp-spec">• Koneksi: I2C (SDA, SCL) ke ESP32</div>
+                        <div class="comp-spec">• Kabel: Panjang ~50cm ke board utama</div>
+                    </div>
+
+                    <div class="component-back">
+                        <div class="comp-name">⚖️ Load Cell (Sensor Berat Badan)</div>
+                        <div class="comp-spec">• Posisi: Bagian bawah frame (platform terpisah)</div>
+                        <div class="comp-spec">• Koneksi: HX711 amplifier ke ESP32</div>
+                        <div class="comp-spec">• Kapasitas: 0-200 kg</div>
+                    </div>
+
+                    <div class="component-back">
+                        <div class="comp-name">📏 Sensor Ultrasonik HC-SR04</div>
+                        <div class="comp-spec">• Posisi: Frame atas cermin (mengarah ke bawah)</div>
+                        <div class="comp-spec">• Koneksi: Trig & Echo ke ESP32</div>
+                        <div class="comp-spec">• Jangkauan: 2cm - 400cm</div>
+                    </div>
+
+                    <div class="component-back">
+                        <div class="comp-name">🎤 Mikrofon & 🔊 Speaker</div>
+                        <div class="comp-spec">• Mikrofon: INMP441 I2S digital microphone</div>
+                        <div class="comp-spec">• Speaker: 3W 8Ω (stereo mini speaker)</div>
+                        <div class="comp-spec">• Posisi: Samping kiri dan kanan frame</div>
+                    </div>
+
+                    <div class="component-back">
+                        <div class="comp-name">🔌 Power Supply Unit</div>
+                        <div class="comp-spec">• Input: AC 220V</div>
+                        <div class="comp-spec">• Output: DC 5V/3A (untuk ESP32) & 12V/2A (untuk LCD)</div>
+                        <div class="comp-spec">• Posisi: Pojok kiri bawah dengan heatsink</div>
+                    </div>
+
+                    <div class="component-back">
+                        <div class="comp-name">📡 WiFi Antenna</div>
+                        <div class="comp-spec">• Posisi: Terpasang di ESP32-CAM</div>
+                        <div class="comp-spec">• Fungsi: Koneksi IoT cloud dan internet</div>
+                    </div>
+
+                    <div class="power-port">
+                        ⚡ AC IN
+                    </div>
+
+                    <div
+                        style="position: absolute; top: 1215px; left: 451px; background: rgba(255,255,255,0.9); padding: 15px; border-radius: 10px; max-width: 200px;">
+                        <div style="font-weight: bold; color: #2c3e50; margin-bottom: 10px; font-size: 14px;">Kabel
+                            Management:</div>
+                        <div style="font-size: 12px; color: #555; line-height: 1.6;">
+                            ✓ Kabel disusun rapi dengan cable ties<br>
+                            ✓ Gunakan kabel spiral untuk fleksibilitas<br>
+                            ✓ Labelkan setiap kabel untuk maintenance
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="legend">
+                <div class="legend-title">Catatan Pemasangan:</div>
+                <p style="color: #555; line-height: 2; font-size: 14px;">
+                    • Pastikan semua komponen terpasang dengan bracket/mounting yang kuat<br>
+                    • Berikan ventilasi yang cukup untuk mencegah overheat<br>
+                    • Gunakan thermal paste pada heatsink power supply<br>
+                    • Periksa grounding untuk keamanan listrik<br>
+                    • Test semua koneksi sebelum menutup panel belakang<br>
+                    • Sisakan ruang untuk akses maintenance dan upgrade
+                </p>
+            </div>
+        </div>
+
+        <!-- KOMPONEN DETAIL -->
+        <div id="components" class="view-container">
+            <h2 style="text-align: center; color: #2c3e50; margin-bottom: 30px;">Detail Komponen Smart Mirror</h2>
+
+            <div class="component-diagram">
+                <div class="comp-card">
+                    <div class="comp-icon">📷</div>
+                    <h3>ESP32-CAM</h3>
+                    <p><strong>Fungsi:</strong> Mikrokontroler utama dengan kamera</p>
+                    <p><strong>Spek:</strong> WiFi, Bluetooth, OV2640 2MP camera</p>
+                    <p><strong>Ukuran:</strong> 27×40.5×4.5mm</p>
+                    <p><strong>Konsumsi:</strong> ~6mA normal, ~180mA saat streaming</p>
+                </div>
+
+                <div class="comp-card">
+                    <div class="comp-icon">❤️</div>
+                    <h3>MAX30100</h3>
+                    <p><strong>Fungsi:</strong> Sensor detak jantung & SpO₂</p>
+                    <p><strong>Teknologi:</strong> Pulse oximetry (LED merah & infrared)</p>
+                    <p><strong>Akurasi:</strong> ±2 BPM (heart rate), ±2% (SpO₂)</p>
+                    <p><strong>Interface:</strong> I2C communication</p>
+                </div>
+                <div class="comp-card">
+                    <div class="comp-icon">⚖️</div>
+                    <h3>Load Cell + HX711</h3>
+                    <p><strong>Fungsi:</strong> Sensor berat badan</p>
+                    <p><strong>Kapasitas:</strong> 0-200 kg</p>
+                    <p><strong>Akurasi:</strong> ±50 gram</p>
+                    <p><strong>Amplifier:</strong> HX711 24-bit ADC</p>
+                </div>
+
+                <div class="comp-card">
+                    <div class="comp-icon">📏</div>
+                    <h3>HC-SR04 Ultrasonik</h3>
+                    <p><strong>Fungsi:</strong> Sensor tinggi badan</p>
+                    <p><strong>Jangkauan:</strong> 2cm - 400cm</p>
+                    <p><strong>Akurasi:</strong> ±3mm</p>
+                    <p><strong>Frekuensi:</strong> 40 KHz</p>
+                </div>
+
+                <div class="comp-card">
+                    <div class="comp-icon">🎤</div>
+                    <h3>INMP441 Microphone</h3>
+                    <p><strong>Fungsi:</strong> Input suara untuk voice command</p>
+                    <p><strong>Interface:</strong> I2S digital audio</p>
+                    <p><strong>SNR:</strong> 61 dB</p>
+                    <p><strong>Sensitivitas:</strong> -26 dBFS</p>
+                </div>
+
+                <div class="comp-card">
+                    <div class="comp-icon">🔊</div>
+                    <h3>Mini Speaker 3W</h3>
+                    <p><strong>Fungsi:</strong> Output suara untuk respon sistem</p>
+                    <p><strong>Impedansi:</strong> 8Ω</p>
+                    <p><strong>Power:</strong> 3W RMS</p>
+                    <p><strong>Frekuensi:</strong> 100Hz - 20KHz</p>
+                </div>
+
+                <div class="comp-card">
+                    <div class="comp-icon">📺</div>
+                    <h3>LCD Monitor 24"</h3>
+                    <p><strong>Fungsi:</strong> Display utama di balik kaca</p>
+                    <p><strong>Resolusi:</strong> 1920×1080 Full HD</p>
+                    <p><strong>Brightness:</strong> 400+ cd/m² (minimal)</p>
+                    <p><strong>Contrast:</strong> 1000:1</p>
+                </div>
+
+                <div class="comp-card">
+                    <div class="comp-icon">🪞</div>
+                    <h3>One-Way Mirror Glass</h3>
+                    <p><strong>Fungsi:</strong> Cermin dua arah</p>
+                    <p><strong>Ketebalan:</strong> 4-6mm</p>
+                    <p><strong>Transparansi:</strong> 30-40%</p>
+                    <p><strong>Reflektivitas:</strong> 60-70%</p>
+                </div>
+
+                <div class="comp-card">
+                    <div class="comp-icon">🔌</div>
+                    <h3>Power Supply</h3>
+                    <p><strong>Input:</strong> AC 220V 50Hz</p>
+                    <p><strong>Output 1:</strong> DC 5V/3A (ESP32 & sensor)</p>
+                    <p><strong>Output 2:</strong> DC 12V/2A (LCD monitor)</p>
+                    <p><strong>Proteksi:</strong> Over-current, over-voltage</p>
+                </div>
+
+                <div class="comp-card">
+                    <div class="comp-icon">📡</div>
+                    <h3>WiFi Module</h3>
+                    <p><strong>Fungsi:</strong> Konektivitas IoT</p>
+                    <p><strong>Standard:</strong> 802.11 b/g/n</p>
+                    <p><strong>Frekuensi:</strong> 2.4 GHz</p>
+                    <p><strong>Jangkauan:</strong> ~100m (open space)</p>
+                </div>
+
+                <div class="comp-card">
+                    <div class="comp-icon">🧠</div>
+                    <h3>AI Processing & Recommendation Engine</h3>
+                    <p><strong>Voice Recognition:</strong> Google Speech-to-Text API</p>
+                    <p><strong>Face Detection:</strong> ESP32-CAM built-in</p>
+                    <p><strong>Fuzzy Logic:</strong> Untuk analisis BMI & health status</p>
+                    <p><strong>Rule-based AI:</strong> Sistem rekomendasi otomatis</p>
+                    <p><strong>Response:</strong> Text-to-Speech untuk feedback</p>
+                </div>
+
+                <div class="comp-card">
+                    <div class="comp-icon">🗄️</div>
+                    <h3>Data Storage</h3>
+                    <p><strong>Local:</strong> ESP32 Flash memory (4MB)</p>
+                    <p><strong>Cloud:</strong> Firebase/AWS IoT</p>
+                    <p><strong>Database:</strong> Real-time database untuk history</p>
+                    <p><strong>Backup:</strong> Automatic daily backup</p>
+                </div>
+            </div>
+
+            <div class="legend">
+                <div class="legend-title">Kebutuhan Tambahan:</div>
+                <p style="color: #555; line-height: 2; font-size: 14px;">
+                    🔩 <strong>Hardware:</strong> Bracket mounting, baut M3/M4, kabel jumper, heatsink, cable ties<br>
+                    🪛 <strong>Tools:</strong> Solder station, multimeter, screwdriver set, drill<br>
+                    💻 <strong>Software:</strong> Arduino IDE, ESP32 libraries, Firebase SDK<br>
+                    🌐 <strong>Internet:</strong> WiFi router dengan koneksi stabil<br>
+                    ⚡ <strong>Listrik:</strong> Stop kontak dengan grounding yang baik
+                </p>
+            </div>
+        </div>
+
+        <!-- SISTEM REKOMENDASI -->
+        <div id="recommendation" class="view-container">
+            <h2 style="text-align: center; color: #2c3e50; margin-bottom: 30px;">🧠 Sistem Rekomendasi Hidup Sehat</h2>
+
+            <div
+                style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; border-radius: 15px; color: white; margin-bottom: 30px;">
+                <h3 style="text-align: center; font-size: 24px; margin-bottom: 15px;">Arsitektur Sistem AI</h3>
+                <div
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 20px;">
+                    <div
+                        style="background: rgba(255,255,255,0.2); padding: 20px; border-radius: 10px; text-align: center;">
+                        <div style="font-size: 40px; margin-bottom: 10px;">📊</div>
+                        <div style="font-weight: bold; margin-bottom: 5px;">Data Collection</div>
+                        <div style="font-size: 13px; opacity: 0.9;">Sensor membaca data real-time</div>
+                    </div>
+                    <div
+                        style="background: rgba(255,255,255,0.2); padding: 20px; border-radius: 10px; text-align: center;">
+                        <div style="font-size: 40px; margin-bottom: 10px;">⚙️</div>
+                        <div style="font-weight: bold; margin-bottom: 5px;">Fuzzy Logic Processing</div>
+                        <div style="font-size: 13px; opacity: 0.9;">Analisis dengan logika fuzzy</div>
+                    </div>
+                    <div
+                        style="background: rgba(255,255,255,0.2); padding: 20px; border-radius: 10px; text-align: center;">
+                        <div style="font-size: 40px; margin-bottom: 10px;">🎯</div>
+                        <div style="font-weight: bold; margin-bottom: 5px;">Rule-Based Decision</div>
+                        <div style="font-size: 13px; opacity: 0.9;">Pencocokan dengan rule database</div>
+                    </div>
+                    <div
+                        style="background: rgba(255,255,255,0.2); padding: 20px; border-radius: 10px; text-align: center;">
+                        <div style="font-size: 40px; margin-bottom: 10px;">💡</div>
+                        <div style="font-weight: bold; margin-bottom: 5px;">Recommendation Output</div>
+                        <div style="font-size: 13px; opacity: 0.9;">Saran ditampilkan ke user</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="color: #2c3e50; margin-bottom: 20px;">📋 Tabel Decision Rules (IF-THEN)</h3>
+            <div style="overflow-x: auto;">
+                <table class="specs-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 10%;">No</th>
+                            <th style="width: 40%;">Kondisi (IF)</th>
+                            <th style="width: 15%;">Status</th>
+                            <th style="width: 35%;">Rekomendasi (THEN)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>BMI 18.5-24.9 + Heart Rate 60-100 + SpO₂ 95-100%</td>
+                            <td style="color: #27ae60; font-weight: bold;">✅ SEHAT</td>
+                            <td>Pertahankan pola hidup sehat, olahraga teratur 30 menit/hari</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>BMI < 18.5 (Underweight)</td>
+                            <td style="color: #f39c12; font-weight: bold;">⚠️ KURANG</td>
+                            <td>Tingkatkan asupan kalori, konsumsi protein, konsultasi nutrisionis</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>BMI 25-29.9 (Overweight)</td>
+                            <td style="color: #f39c12; font-weight: bold;">⚠️ LEBIH</td>
+                            <td>Kurangi kalori 500 kcal/hari, olahraga 45 menit, hindari makanan tinggi gula</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>BMI ≥ 30 (Obesitas)</td>
+                            <td style="color: #e74c3c; font-weight: bold;">❌ OBESITAS</td>
+                            <td>Segera konsultasi dokter, diet ketat dengan supervisi ahli gizi</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Heart Rate > 100 BPM (saat istirahat)</td>
+                            <td style="color: #e74c3c; font-weight: bold;">❌ TAKIKARDIA</td>
+                            <td>Istirahat, hindari kafein, segera periksa ke dokter jika berlanjut</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Heart Rate < 60 BPM (bukan atlet)</td>
+                            <td style="color: #f39c12; font-weight: bold;">⚠️ BRADIKARDIA</td>
+                            <td>Konsultasi dokter untuk pemeriksaan jantung lebih lanjut</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>SpO₂ 90-94%</td>
+                            <td style="color: #f39c12; font-weight: bold;">⚠️ RENDAH</td>
+                            <td>Perbaiki postur, tarik napas dalam, hindari asap rokok, cek ulang 5 menit</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>SpO₂ < 90%</td>
+                            <td style="color: #e74c3c; font-weight: bold;">❌ KRITIS</td>
+                            <td>🚨 DARURAT! Segera ke IGD/hubungi ambulans, butuh oksigen medis</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>BMI > 25 + Heart Rate > 90</td>
+                            <td style="color: #e74c3c; font-weight: bold;">❌ RISIKO TINGGI</td>
+                            <td>Risiko kardiovaskular tinggi, segera konsultasi dokter jantung</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>SpO₂ < 95% + Heart Rate> 100</td>
+                            <td style="color: #e74c3c; font-weight: bold;">❌ GAWAT</td>
+                            <td>Kemungkinan gangguan pernapasan/jantung, butuh pemeriksaan medis segera</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 style="color: #2c3e50; margin-top: 40px; margin-bottom: 20px;">🧮 Implementasi Fuzzy Logic untuk BMI
+            </h3>
+            <div style="background: #f8f9fa; padding: 25px; border-radius: 15px; border-left: 5px solid #3498db;">
+                <h4 style="color: #2c3e50; margin-bottom: 15px;">Fungsi Keanggotaan (Membership Function):</h4>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                    <div
+                        style="background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                        <div style="font-weight: bold; color: #3498db; margin-bottom: 10px;">📉 Underweight</div>
+                        <div style="font-size: 14px; color: #555; line-height: 1.6;">
+                            • Sangat Kurus: BMI < 16<br>
+                                • Kurus: BMI 16-18.4<br>
+                                μ(x) = trapezoid(12, 14, 18, 18.5)
+                        </div>
+                    </div>
+                    <div
+                        style="background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                        <div style="font-weight: bold; color: #27ae60; margin-bottom: 10px;">✅ Normal</div>
+                        <div style="font-size: 14px; color: #555; line-height: 1.6;">
+                            • Ideal: BMI 18.5-24.9<br>
+                            • Zona optimal kesehatan<br>
+                            μ(x) = trapezoid(18.5, 20, 23, 24.9)
+                        </div>
+                    </div>
+                    <div
+                        style="background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                        <div style="font-weight: bold; color: #f39c12; margin-bottom: 10px;">⚠️ Overweight</div>
+                        <div style="font-size: 14px; color: #555; line-height: 1.6;">
+                            • Pre-obesitas: BMI 25-29.9<br>
+                            • Risiko sedang<br>
+                            μ(x) = trapezoid(24.9, 25, 28, 29.9)
+                        </div>
+                    </div>
+                    <div
+                        style="background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                        <div style="font-weight: bold; color: #e74c3c; margin-bottom: 10px;">❌ Obesitas</div>
+                        <div style="font-size: 14px; color: #555; line-height: 1.6;">
+                            • Obesitas I: BMI 30-34.9<br>
+                            • Obesitas II: BMI ≥ 35<br>
+                            μ(x) = trapezoid(29.9, 30, 35, 40)
+                        </div>
+                    </div>
+                </div>
+
+                <h4 style="color: #2c3e50; margin-top: 25px; margin-bottom: 15px;">Contoh Perhitungan:</h4>
+                <div
+                    style="background: white; padding: 20px; border-radius: 10px; font-family: monospace; font-size: 14px;">
+                    <strong>Input:</strong> Tinggi = 170 cm, Berat = 75 kg<br><br>
+                    <strong>Step 1 - Hitung BMI:</strong><br>
+                    BMI = Berat / (Tinggi²) = 75 / (1.7²) = 25.95<br><br>
+                    <strong>Step 2 - Fuzzifikasi:</strong><br>
+                    μ_Normal(25.95) = 0.1 (sedikit normal)<br>
+                    μ_Overweight(25.95) = 0.9 (sangat overweight)<br><br>
+                    <strong>Step 3 - Inferensi Rule:</strong><br>
+                    IF BMI is Overweight THEN Status = "Perlu Turun Berat Badan"<br><br>
+                    <strong>Step 4 - Defuzzifikasi:</strong><br>
+                    Output = "Status Overweight (90% confidence)"<br>
+                    Rekomendasi = "Kurangi 500 kcal/hari, olahraga 45 menit"
+                </div>
+            </div>
+
+            <h3 style="color: #2c3e50; margin-top: 40px; margin-bottom: 20px;">🎯 Contoh Output Rekomendasi Real-time
+            </h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                <div
+                    style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); padding: 25px; border-radius: 15px; color: white;">
+                    <div style="font-size: 18px; font-weight: bold; margin-bottom: 15px;">✅ Status: SEHAT</div>
+                    <div style="font-size: 14px; line-height: 1.8; opacity: 0.95;">
+                        <strong>Data Anda:</strong><br>
+                        • BMI: 22.5 (Normal)<br>
+                        • Heart Rate: 72 BPM<br>
+                        • SpO₂: 98%<br><br>
+                        <strong>Rekomendasi:</strong><br>
+                        ✓ Kondisi sangat baik!<br>
+                        ✓ Lanjutkan pola makan seimbang<br>
+                        ✓ Olahraga 30 menit, 5x seminggu<br>
+                        ✓ Minum air 2 liter/hari
+                    </div>
+                </div>
+
+                <div
+                    style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); padding: 25px; border-radius: 15px; color: white;">
+                    <div style="font-size: 18px; font-weight: bold; margin-bottom: 15px;">⚠️ Status: PERLU PERHATIAN
+                    </div>
+                    <div style="font-size: 14px; line-height: 1.8; opacity: 0.95;">
+                        <strong>Data Anda:</strong><br>
+                        • BMI: 27.3 (Overweight)<br>
+                        • Heart Rate: 88 BPM<br>
+                        • SpO₂: 96%<br><br>
+                        <strong>Rekomendasi:</strong><br>
+                        ⚠️ Berat badan berlebih<br>
+                        ⚠️ Kurangi 300-500 kcal/hari<br>
+                        ⚠️ Olahraga cardio 45 menit<br>
+                        ⚠️ Konsultasi nutrisionis
+                    </div>
+                </div>
+
+                <div
+                    style="background: linear-gradient(135deg, #ee0979 0%, #ff6a00 100%); padding: 25px; border-radius: 15px; color: white;">
+                    <div style="font-size: 18px; font-weight: bold; margin-bottom: 15px;">❌ Status: DARURAT</div>
+                    <div style="font-size: 14px; line-height: 1.8; opacity: 0.95;">
+                        <strong>Data Anda:</strong><br>
+                        • BMI: 32.1 (Obesitas)<br>
+                        • Heart Rate: 105 BPM<br>
+                        • SpO₂: 89%<br><br>
+                        <strong>Rekomendasi:</strong><br>
+                        🚨 SEGERA KE DOKTER!<br>
+                        🚨 Risiko kardiovaskular tinggi<br>
+                        🚨 Saturasi oksigen rendah<br>
+                        🚨 Butuh penanganan medis
+                    </div>
+                </div>
+            </div>
+
+            <div class="legend" style="margin-top: 40px;">
+                <div class="legend-title">📌 Catatan Penting Sistem Rekomendasi:</div>
+                <p style="color: #555; line-height: 2; font-size: 14px;">
+                    ⚕️ <strong>Disclaimer Medis:</strong> Rekomendasi bersifat informatif dan edukatif, BUKAN pengganti
+                    diagnosis medis profesional<br>
+                    🔄 <strong>Update Berkala:</strong> Rule database diperbarui sesuai guideline kesehatan WHO dan
+                    Kemenkes RI<br>
+                    🧠 <strong>Machine Learning:</strong> Sistem dapat belajar dari pattern data user untuk rekomendasi
+                    personal<br>
+                    📊 <strong>Historical Analysis:</strong> Rekomendasi berdasarkan trend data 7-30 hari terakhir<br>
+                    🔐 <strong>Privacy:</strong> Data kesehatan dienkripsi dan hanya accessible oleh user<br>
+                    ⏱️ <strong>Real-time Processing:</strong> Rekomendasi dihasilkan dalam < 2 detik setelah pengukuran
+                        </p>
+            </div>
+
+            <h3 style="color: #2c3e50; margin-top: 40px; margin-bottom: 20px;">🗣️ Contoh Interaksi Voice Command</h3>
+            <div style="background: #f8f9fa; padding: 25px; border-radius: 15px;">
+                <div style="display: grid; gap: 20px;">
+                    <div style="background: white; padding: 20px; border-radius: 10px; border-left: 5px solid #3498db;">
+                        <div style="color: #3498db; font-weight: bold; margin-bottom: 10px;">👤 User: "Halo cermin,
+                            bagaimana kesehatanku hari ini?"</div>
+                        <div style="color: #27ae60; font-weight: bold; margin-bottom: 5px;">🤖 Smart Mirror:</div>
+                        <div style="color: #555; font-size: 14px;">
+                            "Halo! Kondisi kesehatanmu hari ini BAIK. BMI kamu 22.5 dalam kategori normal, detak jantung
+                            72 BPM, dan saturasi oksigen 98%. Pertahankan pola hidup sehat ya!"
+                        </div>
+                    </div>
+
+                    <div style="background: white; padding: 20px; border-radius: 10px; border-left: 5px solid #3498db;">
+                        <div style="color: #3498db; font-weight: bold; margin-bottom: 10px;">👤 User: "Apa yang harus
+                            saya lakukan untuk menurunkan berat badan?"</div>
+                        <div style="color: #27ae60; font-weight: bold; margin-bottom: 5px;">🤖 Smart Mirror:</div>
+                        <div style="color: #555; font-size: 14px;">
+                            "Berdasarkan BMI kamu yang 27.3, saya sarankan: Kurangi asupan kalori 500 kcal per hari,
+                            lakukan olahraga cardio 45 menit minimal 4 kali seminggu, hindari makanan tinggi gula dan
+                            lemak jenuh, serta perbanyak konsumsi sayur dan protein. Konsultasi dengan ahli gizi juga
+                            akan sangat membantu."
+                        </div>
+                    </div>
+
+                    <div style="background: white; padding: 20px; border-radius: 10px; border-left: 5px solid #3498db;">
+                        <div style="color: #3498db; font-weight: bold; margin-bottom: 10px;">👤 User: "Kenapa detak
+                            jantungku tinggi?"</div>
+                        <div style="color: #27ae60; font-weight: bold; margin-bottom: 5px;">🤖 Smart Mirror:</div>
+                        <div style="color: #555; font-size: 14px;">
+                            "Detak jantung kamu saat ini 105 BPM, yang tergolong tinggi untuk kondisi istirahat.
+                            Beberapa kemungkinan penyebabnya: stress, kurang tidur, konsumsi kafein berlebih, atau
+                            dehidrasi. Saya sarankan untuk istirahat sejenak, tarik napas dalam-dalam, dan minum air
+                            putih. Jika tetap tinggi setelah 10 menit, sebaiknya konsultasi ke dokter."
+                        </div>
+                    </div>
+
+                    <div style="background: white; padding: 20px; border-radius: 10px; border-left: 5px solid #e74c3c;">
+                        <div style="color: #3498db; font-weight: bold; margin-bottom: 10px;">👤 User: "Tolong beri
+                            motivasi untuk hari ini"</div>
+                        <div style="color: #27ae60; font-weight: bold; margin-bottom: 5px;">🤖 Smart Mirror:</div>
+                        <div style="color: #555; font-size: 14px;">
+                            "Tentu! Kesehatan adalah investasi terbaik dalam hidupmu. Setiap langkah kecil yang kamu
+                            ambil hari ini membawa perubahan besar untuk masa depan. Kamu sudah melakukan pengukuran
+                            kesehatan - itu langkah pertama yang luar biasa! Tetap semangat dan jaga kesehatanmu. Ingat,
+                            tubuh yang sehat adalah rumah jiwa yang bahagia! 💪✨"
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="color: #2c3e50; margin-top: 40px; margin-bottom: 20px;">📈 Fitur Tambahan Sistem Rekomendasi</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                <div
+                    style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border-top: 4px solid #3498db;">
+                    <div style="font-size: 30px; text-align: center; margin-bottom: 15px;">📊</div>
+                    <h4 style="color: #2c3e50; margin-bottom: 10px; text-align: center;">Trend Analysis</h4>
+                    <p style="color: #555; font-size: 14px; line-height: 1.6;">
+                        Sistem menganalisis data 7-30 hari terakhir untuk mendeteksi pattern perubahan berat badan,
+                        detak jantung, dan SpO₂. Memberikan insight apakah kondisi membaik atau memburuk.
+                    </p>
+                </div>
+
+                <div
+                    style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border-top: 4px solid #e74c3c;">
+                    <div style="font-size: 30px; text-align: center; margin-bottom: 15px;">🚨</div>
+                    <h4 style="color: #2c3e50; margin-bottom: 10px; text-align: center;">Alert System</h4>
+                    <p style="color: #555; font-size: 14px; line-height: 1.6;">
+                        Notifikasi otomatis via suara dan smartphone jika terdeteksi kondisi abnormal (SpO₂ < 90%, Heart
+                            Rate> 120 BPM, atau penurunan berat drastis).
+                    </p>
+                </div>
+
+                <div
+                    style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border-top: 4px solid #27ae60;">
+                    <div style="font-size: 30px; text-align: center; margin-bottom: 15px;">🎯</div>
+                    <h4 style="color: #2c3e50; margin-bottom: 10px; text-align: center;">Goal Setting</h4>
+                    <p style="color: #555; font-size: 14px; line-height: 1.6;">
+                        User dapat set target (contoh: turun 5 kg dalam 2 bulan). Sistem memberikan tracking progress
+                        dan motivasi harian untuk mencapai goal.
+                    </p>
+                </div>
+
+                <div
+                    style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border-top: 4px solid #f39c12;">
+                    <div style="font-size: 30px; text-align: center; margin-bottom: 15px;">🍎</div>
+                    <h4 style="color: #2c3e50; margin-bottom: 10px; text-align: center;">Meal Planning</h4>
+                    <p style="color: #555; font-size: 14px; line-height: 1.6;">
+                        Berdasarkan BMI dan target, sistem menyarankan menu makanan harian dengan kalori yang sesuai.
+                        Integrasi dengan database nutrisi Indonesia.
+                    </p>
+                </div>
+
+                <div
+                    style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border-top: 4px solid #9b59b6;">
+                    <div style="font-size: 30px; text-align: center; margin-bottom: 15px;">🏃</div>
+                    <h4 style="color: #2c3e50; margin-bottom: 10px; text-align: center;">Exercise Recommendation</h4>
+                    <p style="color: #555; font-size: 14px; line-height: 1.6;">
+                        Saran olahraga yang disesuaikan dengan kondisi fisik. Untuk BMI tinggi: low-impact exercise.
+                        Untuk kondisi fit: high-intensity workout.
+                    </p>
+                </div>
+
+                <div
+                    style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border-top: 4px solid #1abc9c;">
+                    <div style="font-size: 30px; text-align: center; margin-bottom: 15px;">👨‍⚕️</div>
+                    <h4 style="color: #2c3e50; margin-bottom: 10px; text-align: center;">Doctor Integration</h4>
+                    <p style="color: #555; font-size: 14px; line-height: 1.6;">
+                        Data kesehatan dapat di-export dalam format PDF dan dikirim langsung ke email dokter keluarga
+                        untuk konsultasi jarak jauh (telemedicine).
+                    </p>
+                </div>
+            </div>
+
+            <div
+                style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); padding: 30px; border-radius: 15px; color: white; margin-top: 40px; text-align: center;">
+                <h3 style="font-size: 24px; margin-bottom: 20px;">🎓 Keunggulan Sistem Rekomendasi Kami</h3>
+                <div
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 20px;">
+                    <div>
+                        <div style="font-size: 40px; margin-bottom: 10px;">⚡</div>
+                        <div style="font-weight: bold; font-size: 18px;">Real-time</div>
+                        <div style="font-size: 14px; opacity: 0.9;">Rekomendasi dalam < 2 detik</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 40px; margin-bottom: 10px;">🧠</div>
+                            <div style="font-weight: bold; font-size: 18px;">AI-Powered</div>
+                            <div style="font-size: 14px; opacity: 0.9;">Fuzzy Logic + Rule-based</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 40px; margin-bottom: 10px;">🗣️</div>
+                            <div style="font-weight: bold; font-size: 18px;">Interactive</div>
+                            <div style="font-size: 14px; opacity: 0.9;">Voice command & response</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 40px; margin-bottom: 10px;">📱</div>
+                            <div style="font-weight: bold; font-size: 18px;">Connected</div>
+                            <div style="font-size: 14px; opacity: 0.9;">Cloud sync & mobile app</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 40px; margin-bottom: 10px;">🎯</div>
+                            <div style="font-weight: bold; font-size: 18px;">Personalized</div>
+                            <div style="font-size: 14px; opacity: 0.9;">Sesuai kondisi individual</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 40px; margin-bottom: 10px;">📊</div>
+                            <div style="font-weight: bold; font-size: 18px;">Data-driven</div>
+                            <div style="font-size: 14px; opacity: 0.9;">Berdasarkan guideline medis</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- SPESIFIKASI TEKNIS -->
+            <div id="specs" class="view-container">
+                <h2 style="text-align: center; color: #2c3e50; margin-bottom: 30px;">Spesifikasi Teknis Smart Mirror
+                </h2>
+
+                <h3 style="color: #2c3e50; margin-top: 30px; margin-bottom: 15px;">📐 Dimensi Fisik</h3>
+                <table class="specs-table">
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Spesifikasi</th>
+                    </tr>
+                    <tr>
+                        <td>Tinggi Total</td>
+                        <td>120 cm</td>
+                    </tr>
+                    <tr>
+                        <td>Lebar Total</td>
+                        <td>60 cm</td>
+                    </tr>
+                    <tr>
+                        <td>Kedalaman/Ketebalan</td>
+                        <td>10-15 cm</td>
+                    </tr>
+                    <tr>
+                        <td>Berat Total</td>
+                        <td>~15-20 kg (dengan frame)</td>
+                    </tr>
+                    <tr>
+                        <td>Material Frame</td>
+                        <td>Kayu MDF/Aluminium</td>
+                    </tr>
+                </table>
+
+                <h3 style="color: #2c3e50; margin-top: 30px; margin-bottom: 15px;">⚡ Spesifikasi Elektrikal</h3>
+                <table class="specs-table">
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Spesifikasi</th>
+                    </tr>
+                    <tr>
+                        <td>Input Voltage</td>
+                        <td>AC 220V ± 10%, 50Hz</td>
+                    </tr>
+                    <tr>
+                        <td>Konsumsi Daya Standby</td>
+                        <td>~5W</td>
+                    </tr>
+                    <tr>
+                        <td>Konsumsi Daya Aktif</td>
+                        <td>~30-40W</td>
+                    </tr>
+                    <tr>
+                        <td>Konsumsi Daya Maximum</td>
+                        <td>~50W</td>
+                    </tr>
+                    <tr>
+                        <td>Proteksi</td>
+                        <td>Fuse, Over-current protection</td>
+                    </tr>
+                </table>
+
+                <h3 style="color: #2c3e50; margin-top: 30px; margin-bottom: 15px;">📊 Spesifikasi Sensor & Akurasi</h3>
+                <table class="specs-table">
+                    <tr>
+                        <th>Sensor</th>
+                        <th>Parameter</th>
+                        <th>Range</th>
+                        <th>Akurasi</th>
+                    </tr>
+                    <tr>
+                        <td>MAX30100</td>
+                        <td>Detak Jantung</td>
+                        <td>0-220 BPM</td>
+                        <td>±2 BPM</td>
+                    </tr>
+                    <tr>
+                        <td>MAX30100</td>
+                        <td>SpO₂</td>
+                        <td>70-100%</td>
+                        <td>±2%</td>
+                    </tr>
+                    <tr>
+                        <td>HC-SR04</td>
+                        <td>Tinggi Badan</td>
+                        <td>30-250 cm</td>
+                        <td>±0.3 cm</td>
+                    </tr>
+                    <tr>
+                        <td>Load Cell</td>
+                        <td>Berat Badan</td>
+                        <td>5-200 kg</td>
+                        <td>±50 gram</td>
+                    </tr>
+                    <tr>
+                        <td>Calculated</td>
+                        <td>BMI/IMT</td>
+                        <td>10-50</td>
+                        <td>±0.1</td>
+                    </tr>
+                </table>
+
+                <h3 style="color: #2c3e50; margin-top: 30px; margin-bottom: 15px;">📱 Konektivitas & Interface</h3>
+                <table class="specs-table">
+                    <tr>
+                        <th>Fitur</th>
+                        <th>Spesifikasi</th>
+                    </tr>
+                    <tr>
+                        <td>WiFi</td>
+                        <td>802.11 b/g/n, 2.4GHz, WPA2</td>
+                    </tr>
+                    <tr>
+                        <td>Bluetooth</td>
+                        <td>Bluetooth 4.2 BLE</td>
+                    </tr>
+                    <tr>
+                        <td>Voice Input</td>
+                        <td>INMP441 I2S Digital Microphone</td>
+                    </tr>
+                    <tr>
+                        <td>Voice Output</td>
+                        <td>3W Speaker, Text-to-Speech</td>
+                    </tr>
+                    <tr>
+                        <td>Display</td>
+                        <td>24" LCD, 1920×1080, 60Hz</td>
+                    </tr>
+                    <tr>
+                        <td>Camera</td>
+                        <td>OV2640 2MP, 1600×1200</td>
+                    </tr>
+                </table>
+
+                <h3 style="color: #2c3e50; margin-top: 30px; margin-bottom: 15px;">🌡️ Kondisi Operasional</h3>
+                <table class="specs-table">
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Spesifikasi</th>
+                    </tr>
+                    <tr>
+                        <td>Suhu Operasi</td>
+                        <td>0°C - 40°C</td>
+                    </tr>
+                    <tr>
+                        <td>Kelembaban</td>
+                        <td>20% - 80% RH (non-condensing)</td>
+                    </tr>
+                    <tr>
+                        <td>Pencahayaan Ruangan</td>
+                        <td>100 - 500 lux (optimal untuk display)</td>
+                    </tr>
+                    <tr>
+                        <td>Waktu Respons Sistem</td>
+                        <td>&lt; 2 detik</td>
+                    </tr>
+                    <tr>
+                        <td>Boot Time</td>
+                        <td>~10-15 detik</td>
+                    </tr>
+                </table>
+
+                <h3 style="color: #2c3e50; margin-top: 30px; margin-bottom: 15px;">💾 Software & Platform</h3>
+                <table class="specs-table">
+                    <tr>
+                        <th>Komponen</th>
+                        <th>Teknologi</th>
+                    </tr>
+                    <tr>
+                        <td>Mikrokontroler Framework</td>
+                        <td>ESP32 Arduino Core</td>
+                    </tr>
+                    <tr>
+                        <td>IDE Development</td>
+                        <td>Arduino IDE / PlatformIO</td>
+                    </tr>
+                    <tr>
+                        <td>Cloud Platform</td>
+                        <td>Firebase Realtime Database / AWS IoT</td>
+                    </tr>
+                    <tr>
+                        <td>Voice Recognition</td>
+                        <td>Google Speech-to-Text API</td>
+                    </tr>
+                    <tr>
+                        <td>Voice Synthesis</td>
+                        <td>Google Text-to-Speech API</td>
+                    </tr>
+                    <tr>
+                        <td>UI Framework</td>
+                        <td>HTML5 + CSS3 + JavaScript</td>
+                    </tr>
+                    <tr>
+                        <td>Data Visualization</td>
+                        <td>Chart.js / D3.js</td>
+                    </tr>
+                    <tr>
+                        <td>OTA Updates</td>
+                        <td>ESP32 OTA Firmware</td>
+                    </tr>
+                </table>
+
+                <h3 style="color: #2c3e50; margin-top: 30px; margin-bottom: 15px;">🔒 Keamanan & Privasi</h3>
+                <table class="specs-table">
+                    <tr>
+                        <th>Fitur</th>
+                        <th>Implementasi</th>
+                    </tr>
+                    <tr>
+                        <td>Data Encryption</td>
+                        <td>AES-256 untuk data sensitif</td>
+                    </tr>
+                    <tr>
+                        <td>WiFi Security</td>
+                        <td>WPA2-PSK/WPA3</td>
+                    </tr>
+                    <tr>
+                        <td>User Authentication</td>
+                        <td>Face recognition + PIN</td>
+                    </tr>
+                    <tr>
+                        <td>Data Storage</td>
+                        <td>Local + Cloud backup encrypted</td>
+                    </tr>
+                    <tr>
+                        <td>Privacy Mode</td>
+                        <td>Camera off, data tidak dikirim</td>
+                    </tr>
+                </table>
+
+                <h3 style="color: #2c3e50; margin-top: 30px; margin-bottom: 15px;">⏱️ Response Time & Performance</h3>
+                <table class="specs-table">
+                    <tr>
+                        <th>Operasi</th>
+                        <th>Waktu</th>
+                    </tr>
+                    <tr>
+                        <td>Sensor Reading</td>
+                        <td>0.5 - 1 detik</td>
+                    </tr>
+                    <tr>
+                        <td>Display Update</td>
+                        <td>&lt; 0.5 detik</td>
+                    </tr>
+                    <tr>
+                        <td>Voice Command Recognition</td>
+                        <td>1 - 2 detik</td>
+                    </tr>
+                    <tr>
+                        <td>Voice Response</td>
+                        <td>1 - 2 detik</td>
+                    </tr>
+                    <tr>
+                        <td>Cloud Sync</td>
+                        <td>2 - 5 detik</td>
+                    </tr>
+                    <tr>
+                        <td>BMI Calculation</td>
+                        <td>&lt; 0.1 detik</td>
+                    </tr>
+                </table>
+
+                <div class="legend">
+                    <div class="legend-title">📝 Catatan Penting:</div>
+                    <p style="color: #555; line-height: 2; font-size: 14px;">
+                        ✅ <strong>Sertifikasi:</strong> Perangkat harus memenuhi standar keamanan listrik SNI<br>
+                        ✅ <strong>Kalibrasi:</strong> Sensor perlu dikalibrasi setiap 6 bulan<br>
+                        ✅ <strong>Maintenance:</strong> Pembersihan rutin kaca dan sensor setiap minggu<br>
+                        ✅ <strong>Update:</strong> Firmware update otomatis via OTA<br>
+                        ✅ <strong>Warranty:</strong> Komponen elektronik 1 tahun, kaca 2 tahun<br>
+                        ⚠️ <strong>Disclaimer:</strong> Data kesehatan bersifat informasi, bukan diagnosis medis
+                    </p>
+                </div>
+
+                <div
+                    style="margin-top: 40px; padding: 30px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 15px; color: white; text-align: center;">
+                    <h3 style="margin-bottom: 20px; font-size: 24px;">💰 Estimasi Biaya</h3>
+                    <div
+                        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 20px;">
+                        <div>
+                            <div style="font-size: 14px; opacity: 0.9;">Komponen Elektronik</div>
+                            <div style="font-size: 28px; font-weight: bold; margin-top: 5px;">Rp 1.5 - 2 juta</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 14px; opacity: 0.9;">LCD Monitor + Kaca</div>
+                            <div style="font-size: 28px; font-weight: bold; margin-top: 5px;">Rp 2 - 3 juta</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 14px; opacity: 0.9;">Software & Cloud</div>
+                            <div style="font-size: 28px; font-weight: bold; margin-top: 5px;">Rp 500rb - 1 juta</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 14px; opacity: 0.9;">Frame & Aksesoris</div>
+                            <div style="font-size: 28px; font-weight: bold; margin-top: 5px;">Rp 800rb - 1.2 juta</div>
+                        </div>
+                        <div
+                            style="grid-column: 1 / -1; border-top: 2px solid rgba(255,255,255,0.3); padding-top: 20px; margin-top: 10px;">
+                            <div style="font-size: 16px; opacity: 0.9;">Total Estimasi</div>
+                            <div style="font-size: 36px; font-weight: bold; margin-top: 5px;">Rp 5 - 7 juta</div>
+                            <div style="font-size: 13px; opacity: 0.8; margin-top: 10px;">*Harga dapat bervariasi
+                                tergantung supplier dan kualitas komponen</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <script src="mirror.js"></script>
+</body>
+
+</html>
